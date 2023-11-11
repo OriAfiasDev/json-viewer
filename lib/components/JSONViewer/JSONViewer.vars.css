@@ -1,0 +1,33 @@
+:root .json-viewer {
+  --text-font-family: monospace;
+}
+
+:root .json-viewer--light {
+  --text-string: #00ae6b;
+  --text-number: #875afb;
+  --text-boolean: #d72e82;
+  --text-null: #f2283c;
+  --text-array: #344054;
+  --text-object: #344054;
+  --text-bracket: #344054;
+  --text-key: #5048e5;
+  --text-line-number: #98a2b3;
+  --bg-row-hover: #f5f5f5;
+  --bg-left-panel: #fcfcfd;
+  --border-left-panel: #eaecf0;
+}
+
+:root .json-viewer--dark {
+  --text-string: #8500ae;
+  --text-number: #875afb;
+  --text-boolean: #d72e82;
+  --text-null: #f2283c;
+  --text-array: #344054;
+  --text-object: #344054;
+  --text-bracket: #344054;
+  --text-key: #5048e5;
+  --text-line-number: #98a2b3;
+  --bg-row-hover: #f5f5f5;
+  --bg-left-panel: #fcfcfd;
+  --border-left-panel: #eaecf0;
+}

@@ -1,0 +1,107 @@
+@import './JSONViewer.vars.css';
+
+.wrapper {
+  width: 100%;
+  border-radius: 5px;
+}
+.wrapper:hover {
+  background-color: var(--bg-row-hover);
+}
+
+.container {
+  display: table;
+}
+
+.leftPanelContainer {
+  background-color: var(--bg-left-panel);
+  border-right: 1px solid var(--border-left-panel);
+  display: table-cell;
+  padding-left: 24px;
+  min-width: 46px;
+}
+
+.indent {
+  padding-left: 12px;
+}
+
+.indent-2-1 {
+  margin-left: 12px;
+}
+
+.indent-2-2 {
+  margin-left: 24px;
+}
+
+.indent-2-3 {
+  margin-left: 36px;
+}
+
+.indent-2-4 {
+  margin-left: 48px;
+}
+
+.indent-4-1 {
+  margin-left: 24px;
+}
+
+.indent-4-2 {
+  margin-left: 48px;
+}
+
+.indent-4-3 {
+  margin-left: 72px;
+}
+
+.indent-4-4 {
+  margin-left: 96px;
+}
+
+.iconContainer {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.text {
+  font-family: var(--text-font-family);
+  display: table-cell;
+}
+
+.string {
+  color: var(--text-string);
+}
+
+.number {
+  color: var(--text-number);
+}
+
+.boolean {
+  color: var(--text-boolean);
+}
+
+.null {
+  color: var(--text-null);
+}
+
+.array {
+  color: var(--text-array);
+}
+
+.object {
+  color: var(--text-object);
+}
+
+.bracket {
+  color: var(--text-bracket);
+}
+
+.key {
+  color: var(--text-key);
+}
+
+.lineNumber {
+  color: var(--text-line-number);
+}
