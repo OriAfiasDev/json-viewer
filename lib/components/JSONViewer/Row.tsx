@@ -46,7 +46,7 @@ const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfB
         {row.key && <span className={getClassName(['text', 'key'])}>"{row.key}":&nbsp;</span>}
         <span className={getClassName(['text', 'bracket'])}>{displayBrackets(row)}</span>
         {row.isPrimitive && <span className={getClassName(['text', row.valueType])}>{`${row.value}`}</span>}
-        {!row.isLast && row.isPrimitive && <span className={getClassName(['text', 'bracket'])}>,</span>}
+        {!row.isLast && row.position !== 'start' && <span className={getClassName(['text', 'bracket'])}>,</span>}
         {options.afterLine?.(row)}
       </span>
     </div>
