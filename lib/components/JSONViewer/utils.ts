@@ -1,4 +1,4 @@
-import { Parser, Position, RowType, Theme2, ValueType } from './types.ts';
+import { Parser, Position, RowType, Theme, ValueType } from './types.ts';
 import { v4 as uuid } from 'uuid';
 
 const getValueType = (value: unknown): ValueType =>
@@ -102,7 +102,7 @@ export const getBlockRange = (rows: RowType[], start: number): number[] => {
   return range;
 };
 
-export const getClassName = (theme: Theme2, classNames: string[], userClassName?: string) => {
+export const getClassName = (theme: Theme, classNames: string[], userClassName?: string) => {
   const generalClassName = 'json-viewer';
   const themeClassName = `json-viewer--${theme}`;
   const classes = [generalClassName, themeClassName, ...classNames];

@@ -1,1 +1,1 @@
-export { Button } from './components/Button';
+export { JSONViewer } from './components/JSONViewer';
