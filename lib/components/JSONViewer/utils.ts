@@ -52,8 +52,8 @@ export const parseJSON: Parser = (input) => {
       });
       createClosingRow(stack, valueType, depth);
     } else if (valueType === 'array') {
-      (value as unknown[]).forEach((value, index) => {
-        traverse(value, '', index.toString(), depth + 1);
+      (value as unknown[]).forEach((value) => {
+        traverse(value, '', '', depth + 1);
       });
       createClosingRow(stack, valueType, depth);
     }
