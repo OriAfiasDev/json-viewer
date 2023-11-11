@@ -1,12 +1,9 @@
-// import styled from 'styled-components';
 import { Options, RowType, Theme } from './types.ts';
 import { displayBrackets } from './utils.ts';
 import { Collapse, Expand } from '../../assets';
 import { useCallback } from 'react';
-import classes from './Row.module.css';
-import { useClassName } from './useClassName.tsx';
-
-//TODO: handle context menu ?
+import classes from './styles/Row.module.css';
+import { useClassName } from './hooks';
 
 interface RowProps {
   row: RowType;

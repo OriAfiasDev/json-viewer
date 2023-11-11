@@ -1,5 +1,5 @@
-import { Theme } from './types';
-import { getClassName } from './utils';
+import { Theme } from '../types';
+import { getClassName } from '../utils';
 
 interface Props {
   theme: Theme;

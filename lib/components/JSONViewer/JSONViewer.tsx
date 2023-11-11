@@ -2,9 +2,8 @@ import { Options, Parser, Theme } from './types.ts';
 import { parseJSON } from './utils.ts';
 import { DEFAULT_OPTIONS } from './constants';
 import Row from './Row.tsx';
-import classes from './JSONViewer.module.css';
-import useViewer from './useViewer.tsx';
-import { useClassName } from './useClassName.tsx';
+import classes from './styles/JSONViewer.module.css';
+import { useViewer, useClassName } from './hooks';
 
 interface JSONViewerProps {
   json: string;

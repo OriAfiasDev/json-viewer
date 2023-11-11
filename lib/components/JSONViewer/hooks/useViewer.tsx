@@ -1,5 +1,5 @@
-import { Options, Parser, RowType } from './types.ts';
-import { getBlockRange } from './utils.ts';
+import { Options, Parser, RowType } from '../types.ts';
+import { getBlockRange } from '../utils.ts';
 import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   options: Options;
 }
 
-const useViewer = ({ json, parser, options }: Props) => {
+export const useViewer = ({ json, parser, options }: Props) => {
   const [rows, setRows] = useState<RowType[]>([]);
   const [collapsedRows, setCollapsedRows] = useState<number[][]>([]);
 

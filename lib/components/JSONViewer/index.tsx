@@ -1,3 +1,3 @@
-import './JSONViewer.vars.css';
+import './styles/JSONViewer.vars.css';
 
 export { JSONViewer } from './JSONViewer';
