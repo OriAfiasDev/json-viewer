@@ -3,4 +3,5 @@
   height: 100%;
   padding: 10px 14px;
   background-color: var(--bg-container);
+  box-sizing: border-box;
 }

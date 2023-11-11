@@ -16,20 +16,22 @@
   --bg-row-hover: #f5f5f5;
   --bg-left-panel: #fcfcfd;
   --border-left-panel: #eaecf0;
+  --icon-collapse: #344054;
 }
 
 :root .json-viewer--dark {
-  --text-string: #8500ae;
-  --text-number: #875afb;
-  --text-boolean: #d72e82;
-  --text-null: #f2283c;
-  --text-array: #344054;
-  --text-object: #344054;
-  --text-bracket: #344054;
-  --text-key: #5048e5;
+  --text-string: #ce9178;
+  --text-number: #b5cea8;
+  --text-boolean: #569cd6;
+  --text-null: #569cd6;
+  --text-array: #ffd602;
+  --text-object: #ffd602;
+  --text-bracket: #d4d4d4;
+  --text-key: #9cdcfe;
   --text-line-number: #98a2b3;
-  --bg-container: #444;
-  --bg-row-hover: #f5f5f5;
-  --bg-left-panel: #fcfcfd;
-  --border-left-panel: #eaecf0;
+  --bg-container: #1e1e1e;
+  --bg-row-hover: #323131;
+  --bg-left-panel: #1e1e1e;
+  --border-left-panel: #1e1e1e;
+  --icon-collapse: #d4d4d4;
 }
