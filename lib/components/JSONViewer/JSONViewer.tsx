@@ -1,9 +1,9 @@
-import { Options, Parser, RowType, Theme } from './types.ts';
-import { getBlockRange, getClassName, parseJSON } from './utils.ts';
+import { Options, Parser, Theme } from './types.ts';
+import { getClassName, parseJSON } from './utils.ts';
 import { DEFAULT_OPTIONS } from './constants';
 import Row from './Row.tsx';
-import { useCallback, useEffect, useState } from 'react';
 import classes from './JSONViewer.module.css';
+import useViewer from './useViewer.tsx';
 
 interface JSONViewerProps {
   json: string;
@@ -18,29 +18,7 @@ export const JSONViewer: React.FC<JSONViewerProps> = ({
   options = DEFAULT_OPTIONS,
   theme = 'light',
 }) => {
-  const [rows, setRows] = useState<RowType[]>([]);
-  const [collapsedRows, setCollapsedRows] = useState<number[][]>([]);
-
-  const onCollapse = useCallback(
-    (lineNumber: number, operation: 'collapse' | 'expand') => {
-      const range = getBlockRange(rows, lineNumber);
-
-      if (operation === 'expand') {
-        setCollapsedRows((prev) => prev.filter((row) => row === range));
-      } else {
-        setCollapsedRows((prev) => [...prev, range]);
-      }
-    },
-    [rows]
-  );
-
-  useEffect(() => {
-    const parsedJson = parser(json);
-    setRows(parsedJson);
-
-    const shouldCollapseOnLoad = options.collapse.enabled && options.collapse.collapsedOnLoad;
-    if (shouldCollapseOnLoad) setCollapsedRows([parsedJson.map((row) => row.lineNumber)]);
-  }, [json, parser, options.collapse]);
+  const { rows, collapsedRows, onCollapse } = useViewer({ json, parser, options });
 
   return (
     <div className={getClassName(theme, [classes.container])}>
