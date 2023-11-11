@@ -6,7 +6,7 @@ interface Props {
   module: CSSModuleClasses;
 }
 
-type GetClassName = (keys: (keyof CSSModuleClasses)[]) => string;
+export type GetClassName = (keys: (keyof CSSModuleClasses)[]) => string;
 
 export const useClassName = ({ theme, module }: Props): GetClassName => {
   const getClass: GetClassName = (keys) =>
