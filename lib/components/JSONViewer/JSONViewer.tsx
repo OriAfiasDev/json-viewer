@@ -1,9 +1,10 @@
 import { Options, Parser, Theme } from './types.ts';
-import { getClassName, parseJSON } from './utils.ts';
+import { parseJSON } from './utils.ts';
 import { DEFAULT_OPTIONS } from './constants';
 import Row from './Row.tsx';
 import classes from './JSONViewer.module.css';
 import useViewer from './useViewer.tsx';
+import { useClassName } from './useClassName.tsx';
 
 interface JSONViewerProps {
   json: string;
@@ -19,9 +20,10 @@ export const JSONViewer: React.FC<JSONViewerProps> = ({
   theme = 'light',
 }) => {
   const { rows, collapsedRows, onCollapse } = useViewer({ json, parser, options });
+  const getClassName = useClassName({ theme, module: classes });
 
   return (
-    <div className={getClassName(theme, [classes.container])}>
+    <div className={getClassName(['container'])}>
       {rows.map((row) => (
         <Row
           key={row.id}
