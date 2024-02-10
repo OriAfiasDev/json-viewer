@@ -7,6 +7,14 @@ const meta = {
   component: JSONViewer,
   parameters: {},
   tags: ['autodocs'],
+  argTypes: {
+    parser: {
+      if: {
+        arg: 'json',
+        eq: true,
+      },
+    },
+  },
 } satisfies Meta<typeof JSONViewer>;
 
 export default meta;
