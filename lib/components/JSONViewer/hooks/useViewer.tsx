@@ -1,5 +1,5 @@
 import { Options, Parser, RowType } from '../types.ts';
-import { getBlockRange } from '../utils.ts';
+import { getBlockRange, isEqual } from '../utils.ts';
 import { useCallback, useEffect, useState } from 'react';
 
 interface Props {
@@ -18,7 +18,7 @@ export const useViewer = ({ json, parser, options }: Props) => {
       const range = getBlockRange(rows, lineNumber);
 
       if (operation === 'expand') {
-        setCollapsedRows((prev) => prev.filter((row) => row === range));
+        setCollapsedRows((prev) => prev.filter((row) => !isEqual(row, range)));
       } else {
         setCollapsedRows((prev) => {
           const includedPrevRange = prev.filter((row) => !range.toString().includes(row.toString()));
@@ -38,11 +38,10 @@ export const useViewer = ({ json, parser, options }: Props) => {
       setIsError(true);
     } finally {
       setRows(parsedJson);
+      const shouldCollapseOnLoad = options.collapse?.enabled && options.collapse.collapsedOnLoad;
+      if (shouldCollapseOnLoad) setCollapsedRows([parsedJson.map((row) => row.lineNumber)]);
     }
-
-    const shouldCollapseOnLoad = options.collapse?.enabled && options.collapse.collapsedOnLoad;
-    if (shouldCollapseOnLoad) setCollapsedRows([parsedJson.map((row) => row.lineNumber)]);
-  }, [json, parser, options.collapse]);
+  }, [json, parser, options.collapse?.enabled, options.collapse?.collapsedOnLoad]);
 
   return { rows, collapsedRows, onCollapse, options, isError } as const;
 };

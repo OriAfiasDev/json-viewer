@@ -115,3 +115,5 @@ export const getClassName = (theme: Theme, classNames: string[], userClassName?:
   if (userClassName) classNames.push(userClassName);
   return classes.join(' ');
 };
+
+export const isEqual = (arr1: number[], arr2: number[]) => arr1.toString() === arr2.toString();
