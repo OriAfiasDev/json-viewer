@@ -1,6 +1,5 @@
-import { Options, Parser, Theme } from './types.ts';
+import { Options, Parser, RowType, Theme } from './types.ts';
 import { parseJSON } from './utils.ts';
-import { DEFAULT_OPTIONS } from './constants';
 import Row from './Row.tsx';
 import classes from './styles/JSONViewer.module.css';
 import { useViewer, useClassName } from './hooks';
@@ -8,16 +7,37 @@ import { useViewer, useClassName } from './hooks';
 interface JSONViewerProps {
   json: string;
   parser?: Parser;
-  options?: Options;
   theme?: Theme;
+  tabSize?: 2 | 4;
+  showLineNumbers?: boolean;
+  beforeLine?: (row: RowType) => React.ReactNode;
+  afterLine?: (row: RowType) => React.ReactNode;
+  collapseEnabled?: boolean;
+  collapsedOnLoad?: boolean;
 }
 
 export const JSONViewer: React.FC<JSONViewerProps> = ({
   json,
   parser = parseJSON,
-  options = DEFAULT_OPTIONS,
   theme = 'light',
+  tabSize = 4,
+  showLineNumbers = true,
+  collapseEnabled = true,
+  collapsedOnLoad = false,
+  beforeLine,
+  afterLine,
 }) => {
+  const options: Options = {
+    tabSize,
+    showLineNumbers,
+    collapse: {
+      enabled: collapseEnabled,
+      collapsedOnLoad: collapsedOnLoad,
+    },
+    beforeLine,
+    afterLine,
+  };
+
   const { rows, collapsedRows, onCollapse } = useViewer({ json, parser, options });
   const getClassName = useClassName({ theme, module: classes });
 
