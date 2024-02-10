@@ -18,10 +18,10 @@ export type Parser = (value: string) => RowType[];
 
 export type Options = {
   showLineNumbers?: boolean;
-  tabSize: 2 | 4;
+  tabSize?: 2 | 4;
   beforeLine?: (row: RowType) => React.ReactNode;
   afterLine?: (row: RowType) => React.ReactNode;
-  collapse: {
+  collapse?: {
     collapsedOnLoad?: boolean;
     enabled?: boolean;
   };
