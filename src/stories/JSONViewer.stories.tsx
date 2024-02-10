@@ -3,11 +3,17 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { JSONViewer } from '../../lib/main';
 
 const meta = {
-  title: 'Example/JSONViewer',
+  title: 'JSONViewer',
   component: JSONViewer,
   parameters: {},
   tags: ['autodocs'],
   argTypes: {
+    afterLine: {
+      description: 'a component to be rendered after each line.',
+    },
+    beforeLine: {
+      description: 'a component to be rendered before each line.',
+    },
     parser: {
       if: {
         arg: 'json',
@@ -96,5 +102,22 @@ export const NoCollapseOnLoad: Story = {
   args: {
     json: `{"foo": "bar"}`,
     collapsedOnLoad: false,
+  },
+};
+
+export const BeforeLine: Story = {
+  name: 'beforeLine',
+  args: {
+    json: `{"foo": "bar"}`,
+    beforeLine: (row) =>
+      row.isPrimitive && <span style={{ fontSize: 8, color: 'gray', verticalAlign: 'sub' }}>{row.valueType}</span>,
+  },
+};
+
+export const AfterLine: Story = {
+  name: 'afterLine',
+  args: {
+    json: `{"foo": "bar"}`,
+    afterLine: (row) => row.isPrimitive && <span style={{ fontSize: 8, color: 'gray' }}>{row.valueType}</span>,
   },
 };
