@@ -19,7 +19,10 @@ export const useViewer = ({ json, parser, options }: Props) => {
       if (operation === 'expand') {
         setCollapsedRows((prev) => prev.filter((row) => row === range));
       } else {
-        setCollapsedRows((prev) => [...prev, range]);
+        setCollapsedRows((prev) => {
+          const includedPrevRange = prev.filter((row) => !range.toString().includes(row.toString()));
+          return [...includedPrevRange, range];
+        });
       }
     },
     [rows]
