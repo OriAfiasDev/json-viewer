@@ -32,7 +32,7 @@ export const useViewer = ({ json, parser, options }: Props) => {
     const parsedJson = parser(json);
     setRows(parsedJson);
 
-    const shouldCollapseOnLoad = options.collapse.enabled && options.collapse.collapsedOnLoad;
+    const shouldCollapseOnLoad = options.collapse?.enabled && options.collapse.collapsedOnLoad;
     if (shouldCollapseOnLoad) setCollapsedRows([parsedJson.map((row) => row.lineNumber)]);
   }, [json, parser, options.collapse]);
 

@@ -17,7 +17,7 @@ interface RowProps {
 const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfBlock, onCollapse }) => {
   const getClassName = useClassName({ theme, module: classes });
   const isCollapsable = !row.isPrimitive && row.position === 'start';
-  const shouldDisplayLeftPanel = options.showLineNumbers || options.collapse.enabled;
+  const shouldDisplayLeftPanel = options?.showLineNumbers || options?.collapse?.enabled;
 
   const collapseIconProps = { height: 16, width: 16, className: getClassName(['collapseIcon']) };
 
@@ -34,7 +34,7 @@ const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfB
           <span className={getClassName(['text', 'lineNumber'])}>
             {options.showLineNumbers && String(row.lineNumber).padStart(2, '0')}
             <span
-              className={getClassName(['iconContainer', options.collapse.enabled && isCollapsable ? '' : 'hidden'])}
+              className={getClassName(['iconContainer', options.collapse?.enabled && isCollapsable ? '' : 'hidden'])}
               onClick={onCollapseClick}
             >
               {isCollapsed ? <Expand {...collapseIconProps} /> : <Collapse {...collapseIconProps} />}
@@ -42,7 +42,7 @@ const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfB
           </span>
         </span>
       )}
-      <span className={getClassName(['indent', `indent-${options.tabSize}-${row.depth}`])} />
+      <span className={getClassName(['indent', `indent-${options.tabSize || 4}-${row.depth}`])} />
       {options.beforeLine?.(row)}
       {row.key && <span className={getClassName(['text', 'key'])}>"{row.key}":&nbsp;</span>}
       <span className={getClassName(['text', 'bracket'])}>{displayBrackets(row)}</span>
