@@ -17,6 +17,7 @@
   --bg-left-panel: #fcfcfd;
   --border-left-panel: #eaecf0;
   --icon-collapse: #344054;
+  --error: #9b000f;
 }
 
 :root .json-viewer--dark {
@@ -34,4 +35,5 @@
   --bg-left-panel: #1e1e1e;
   --border-left-panel: #1e1e1e;
   --icon-collapse: #d4d4d4;
+  --error: #e60d23;
 }

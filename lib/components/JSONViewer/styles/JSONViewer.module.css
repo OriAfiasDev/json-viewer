@@ -6,3 +6,10 @@
   box-sizing: border-box;
   overflow: auto;
 }
+
+.error {
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--text-font-family);
+}

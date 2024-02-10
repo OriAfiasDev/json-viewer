@@ -10,6 +10,7 @@ interface Props {
 
 export const useViewer = ({ json, parser, options }: Props) => {
   const [rows, setRows] = useState<RowType[]>([]);
+  const [isError, setIsError] = useState(false);
   const [collapsedRows, setCollapsedRows] = useState<number[][]>([]);
 
   const onCollapse = useCallback(
@@ -29,14 +30,21 @@ export const useViewer = ({ json, parser, options }: Props) => {
   );
 
   useEffect(() => {
-    const parsedJson = parser(json);
-    setRows(parsedJson);
+    let parsedJson: RowType[] = [];
+    try {
+      parsedJson = parser(json);
+      setIsError(false);
+    } catch {
+      setIsError(true);
+    } finally {
+      setRows(parsedJson);
+    }
 
     const shouldCollapseOnLoad = options.collapse?.enabled && options.collapse.collapsedOnLoad;
     if (shouldCollapseOnLoad) setCollapsedRows([parsedJson.map((row) => row.lineNumber)]);
   }, [json, parser, options.collapse]);
 
-  return { rows, collapsedRows, onCollapse, options } as const;
+  return { rows, collapsedRows, onCollapse, options, isError } as const;
 };
 
 export default useViewer;

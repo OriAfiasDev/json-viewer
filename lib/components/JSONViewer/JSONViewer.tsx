@@ -38,8 +38,12 @@ export const JSONViewer: React.FC<JSONViewerProps> = ({
     afterLine,
   };
 
-  const { rows, collapsedRows, onCollapse } = useViewer({ json, parser, options });
+  const { rows, collapsedRows, onCollapse, isError } = useViewer({ json, parser, options });
   const getClassName = useClassName({ theme, module: classes });
+
+  if (isError) {
+    return <div className={getClassName(['container', 'error'])}>Invalid JSON</div>;
+  }
 
   return (
     <div className={getClassName(['container'])}>
