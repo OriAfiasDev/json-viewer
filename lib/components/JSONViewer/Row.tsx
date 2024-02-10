@@ -45,7 +45,7 @@ const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfB
       <span className={getClassName(['indent', `indent-${options.tabSize || 4}-${row.depth}`])} />
       {options.beforeLine?.(row)}
       {row.key && <span className={getClassName(['text', 'key'])}>"{row.key}":&nbsp;</span>}
-      <span className={getClassName(['text', 'bracket'])}>{displayBrackets(row)}</span>
+      <span className={getClassName(['text', 'bracket'])}>{displayBrackets(row, isCollapsed)}</span>
       {row.isPrimitive && (
         <span className={getClassName(['text', row.valueType])}>
           {`${row.value}`}

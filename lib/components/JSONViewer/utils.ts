@@ -75,8 +75,14 @@ const brackets: { [key in ValueType]?: { [position in Position]: string } } = {
   array: { start: '[', end: ']', middle: '' },
 };
 
-export const displayBrackets = (row: RowType) => {
+export const displayBrackets = (row: RowType, isCollapsed: boolean) => {
   const { valueType, position } = row;
+  if (isCollapsed) {
+    if (position === 'start') {
+      return `${brackets[valueType]?.start}...${brackets[valueType]?.end}`;
+    }
+    return null;
+  }
   return brackets[valueType]?.[position] || '';
 };
 
