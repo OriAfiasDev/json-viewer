@@ -25,7 +25,7 @@ const Row: React.FC<RowProps> = ({ row, theme, options, isCollapsed, isMiddleOfB
     onCollapse(row.lineNumber, isCollapsed ? 'expand' : 'collapse');
   }, [row.lineNumber, isCollapsed, onCollapse]);
 
-  if (isCollapsed && isMiddleOfBlock) return null;
+  if (isCollapsed && (isMiddleOfBlock || row.position === 'end')) return null;
 
   return (
     <span className={classes.container}>
